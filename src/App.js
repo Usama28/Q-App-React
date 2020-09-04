@@ -7,6 +7,7 @@ import { firebase } from './config/Firebase'
 function App() {
 
   const [isLoggedIn, SetLogged] = useState(true)
+  const [isLoading, SetLoading] = useState(true)
 
   useEffect(() => {
     stateAuthentication()
@@ -14,7 +15,7 @@ function App() {
   const stateAuthentication = function () {
     firebase.auth().onAuthStateChanged(function (user) {
       SetLogged(user ? { userEmail: user.email } : false)
-
+      SetLoading(false)
       console.log(user)
     })
   }
@@ -22,7 +23,7 @@ function App() {
   return (
     <div >
       <div className="head" >
-        <Router isLoggedIn={isLoggedIn} />
+        <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
       </div>
 
     </div>

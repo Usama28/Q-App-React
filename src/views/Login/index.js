@@ -98,6 +98,7 @@ function Login() {
                                 marginTop: '2%'
                             }}>
                                 <p >Didn't Have an account? <button
+                                    style={{ border: 'none', backgroundColor: 'white', color: 'blue' }}
                                     onClick={() => dispatch({ type: 'OPEN_MODAL', dimmer: 'blurring' })}
                                 >Sign Up</button></p>
                             </div>

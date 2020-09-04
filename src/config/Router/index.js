@@ -10,9 +10,11 @@ import Home from "../../views/Home";
 
 function router(props) {
 
-    const { isLoggedIn } = props
+    const { isLoggedIn, isLoading } = props
 
-    console.log(isLoggedIn)
+    if (isLoading) {
+        return <img width="50" src="https://i.gifer.com/ZZ5H.gif" />
+    }
     const currentPath = window.location.pathname.length === 1 ? 'Home' : window.location.pathname
 
     console.log(currentPath)
