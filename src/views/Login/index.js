@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Grid, Segment, Button, Icon, Modal } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
-import { LogIn, FbSignIn } from '../../config/Firebase'
+import { LogIn, FbSignIn, GoogleSignIn } from '../../config/Firebase'
 
 //function for modal no logics
 function exampleReducer(state, action) {
@@ -29,6 +29,7 @@ function Login() {
     const [LoginEmail, SetLoginEmail] = useState('')
     const [LoginPassword, SetLoginPassword] = useState('')
     const [provider, setProvider] = useState('')
+    const [googleProvider, setGoogle] = useState('')
 
     //login function
     const setLogin = async function () {
@@ -56,7 +57,18 @@ function Login() {
         }
     }
 
-
+    //Google Sign In
+    const GoogleUser = async function () {
+        try {
+            const GoogleResult = await GoogleSignIn(googleProvider)
+            var token = GoogleResult.credential.accessToken;
+            var user = GoogleResult.user;
+            history.push('/Home')
+        }
+        catch (error) {
+            alert(error.message)
+        }
+    }
 
     return (
         <div className="App-header">
@@ -109,7 +121,10 @@ function Login() {
                                     onClick={FbUser} >
                                     <Icon name='facebook' /> Facebook
                                 </Button>
-                                <Button color='red' style={{ marginLeft: '1%' }}>
+                                <Button
+                                    color='red'
+                                    onClick={GoogleUser}
+                                    style={{ marginLeft: '1%' }}>
                                     <Icon name='google' /> Google
                                 </Button>
                             </Button.Group>

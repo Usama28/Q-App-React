@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "../../views/Login";
 import Home from "../../views/Home";
+import Company from "../../views/Company";
 
 function router(props) {
 
@@ -29,6 +30,9 @@ function router(props) {
 
                     <Route path="/Home">
                         {AuthChecker(isLoggedIn, <Home />)}
+                    </Route>
+                    <Route path="/Company">
+                        {AuthChecker(isLoggedIn, <Company />)}
                     </Route>
 
                 </Switch>
