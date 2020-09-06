@@ -31,44 +31,50 @@ function Company() {
             >+</Button>
 
             {/* Modal Code */}
-            <Modal
-                dimmer={dimmer}
-                open={open}
-                onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
-            >
-                <Modal.Header>Add Details</Modal.Header>
-                <Modal.Content>
-                    <Grid>
-                        <Grid.Column>
-                            <Form>
-                                <Segment style={{ padding: '4%' }}>
-                                    <Form.Group widths='equal'>
-                                        <Form.Input fluid label='First name' placeholder='First name' />
-                                        <Form.Input fluid label='Last name' placeholder='Last name' />
+            <div className="company-modal">
+                <Modal
+                    style={{ width: 380 }}
+                    dimmer={dimmer}
+                    open={open}
+                    onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+                >
+                    <Modal.Header>Add Details</Modal.Header>
+                    <Modal.Content>
+                        <Grid >
+                            <Grid.Column>
+                                <Form>
+                                    <Segment style={{ padding: '4%' }}>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                label='Email'
+                                                placeholder='Enter Email'
 
-                                    </Form.Group>
-                                    <Form.Group widths='equal'>
-                                        <Form.Input
-                                            fluid
-                                            label='Email'
-                                            placeholder='Enter Email'
+                                            />
+                                        </Form.Group>
 
-                                        />
-                                    </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                label='Password'
+                                                placeholder='Enter Password'
 
+                                            />
+                                        </Form.Group>
 
-                                </Segment>
-                            </Form>
-                        </Grid.Column>
-                    </Grid>
+                                    </Segment>
+                                </Form>
+                            </Grid.Column>
+                        </Grid>
 
-                </Modal.Content>
-                <Modal.Actions>
-                    <Button secondary onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
-                        Add
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button secondary onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+                            Add
                         </Button>
-                </Modal.Actions>
-            </Modal>
+                    </Modal.Actions>
+                </Modal>
+            </div>
         </div>
 
 

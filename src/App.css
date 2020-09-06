@@ -5,14 +5,15 @@
   display: flex;
   flex-direction: column;
   align-items: center; 
-  
-  
-  
   justify-content: center;
  
 }
 .head{
-/* margin-top: 5%; */
+
 color: #0080FF;
 }
-
+.company-modal{
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
