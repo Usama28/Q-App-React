@@ -15,10 +15,7 @@ function Home() {
             <div>
                 <Button secondary onClick={() => history.push('/Company')} >Company</Button>
                 <Button secondary >Normal User</Button>
-                <Button secondary >Normal User</Button>
-                <Button secondary >Normal User</Button>
-                <Button secondary >Normal User</Button>
-                <Button secondary >Normal User</Button>
+
 
 
             </div>
