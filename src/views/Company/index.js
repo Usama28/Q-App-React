@@ -40,7 +40,25 @@ function Company() {
                 <Modal.Content>
                     <Grid>
                         <Grid.Column>
-                            <p>details here</p>
+                            <Form>
+                                <Segment style={{ padding: '4%' }}>
+                                    <Form.Group widths='equal'>
+                                        <Form.Input fluid label='First name' placeholder='First name' />
+                                        <Form.Input fluid label='Last name' placeholder='Last name' />
+
+                                    </Form.Group>
+                                    <Form.Group widths='equal'>
+                                        <Form.Input
+                                            fluid
+                                            label='Email'
+                                            placeholder='Enter Email'
+
+                                        />
+                                    </Form.Group>
+
+
+                                </Segment>
+                            </Form>
                         </Grid.Column>
                     </Grid>
 
