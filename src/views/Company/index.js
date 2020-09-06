@@ -47,18 +47,50 @@ function Company() {
                                         <Form.Group widths='equal'>
                                             <Form.Input
                                                 fluid
-                                                label='Email'
-                                                placeholder='Enter Email'
-
+                                                label='Company Name'
+                                                placeholder='Enter name of company'
                                             />
                                         </Form.Group>
 
                                         <Form.Group widths='equal'>
                                             <Form.Input
                                                 fluid
-                                                label='Password'
-                                                placeholder='Enter Password'
+                                                label='Since'
+                                                type='date'
+                                            />
+                                        </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                label='Certificates'
+                                                type='file'
+                                            />
+                                        </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                type='file'
+                                            />
+                                        </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                type='file'
+                                            />
+                                        </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                type='time'
+                                                label='Timings'
 
+                                            />
+                                        </Form.Group>
+                                        <Form.Group widths='equal'>
+                                            <Form.Input
+                                                fluid
+                                                type='text'
+                                                label='Address'
                                             />
                                         </Form.Group>
 
@@ -68,8 +100,10 @@ function Company() {
                         </Grid>
 
                     </Modal.Content>
-                    <Modal.Actions>
-                        <Button secondary onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+                    <Modal.Actions style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button
+                            secondary
+                            onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
                             Add
                         </Button>
                     </Modal.Actions>
