@@ -4,7 +4,8 @@ import './App.css';
 import Router from './config/Router';
 import { firebase } from './config/Firebase';
 import { Button } from 'semantic-ui-react'
-
+import { Provider } from 'react-redux'
+import store from './store/index'
 
 function App() {
 
@@ -18,30 +19,24 @@ function App() {
   }, [])
   const stateAuthentication = function () {
     firebase.auth().onAuthStateChanged(function (user) {
-      SetLogged(user ? { userEmail: user.email } : false)
+      SetLogged(user ? { userEmail: user.email, userName: user.displayName } : false)
       SetLoading(false)
       console.log(user)
     })
   }
 
-  const [switchState, setState] = useState(false)
-
-
   return (
     <div >
-      <div className="head" >
-        {isLoggedIn && !isLoading && <div>
-          <h5>{isLoggedIn.userEmail}</h5>
-          <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
-        </div>}
+      <Provider store={store}>
+        <div className="head" >
+          {isLoggedIn && !isLoading && <div>
+            <h5>{isLoggedIn.userName}</h5>
+            <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
+          </div>}
 
-        <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
-      </div >
-
-      {/* <div switchState={switchState}>
-        <h1 >bulb on</h1>
-        <h1>bulb off</h1>
-      </div> */}
+          <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
+        </div >
+      </Provider>
     </div>
   );
 }

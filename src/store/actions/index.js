@@ -10,3 +10,8 @@ function unsetUser() {
         type: 'UNSET_USER'
     }
 }
+
+export {
+    setUser,
+    unsetUser
+}

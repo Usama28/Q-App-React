@@ -49,7 +49,7 @@ function Login() {
             var token = result.credential.accessToken;
             var user = result.user;
             history.push('/Home')
-            console.log(token)
+            console.log(provider)
             console.log(user)
         }
         catch (error) {
