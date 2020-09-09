@@ -13,9 +13,9 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// function User(email, password) {
-//     return firebase.auth().createUserWithEmailAndPassword(email, password)
-// }
+function User(email, password) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+}
 
 function LogIn(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password)
@@ -31,7 +31,7 @@ function GoogleSignIn(googleProvider) {
     return firebase.auth().signInWithPopup(googleProvider)
 }
 export {
-    // User,
+    User,
     LogIn,
     FbSignIn,
     GoogleSignIn,
