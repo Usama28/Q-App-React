@@ -43,7 +43,7 @@ function router(props) {
     )
 }
 function AuthChecker(loggedValue, component) {
-    return loggedValue ? component : <Redirect path='/' />
+    return loggedValue ? component : <Redirect to='/' />
 }
 function StateChecker(stateValue, component) {
     return !stateValue ? component : <Redirect path='/' />

@@ -6,22 +6,24 @@ function SignUp(props) {
 
     console.log(props)
     const history = useHistory()
-    const [LoginEmail, SetLoginEmail] = useState('')
-    const [LoginPassword, SetLoginPassword] = useState('')
+    const [userEmail, SetUserEmail] = useState('')
+    const [userPassword, SetUserPassword] = useState('')
 
     return (
         <div>
 
-            <div>
+            <div className="App-header">
                 <Grid style={{ width: 382, verticalAlign: 'left' }}>
                     <Grid.Column style={{ backgroundColor: 'white', border: '1px solid transparent', borderRadius: '2%', padding: '4%' }}>
-                        <h1 style={{ color: 'black', textAlign: "center" }}>Login</h1>
+                        <h1 style={{ color: 'black', textAlign: "center" }}>Sign Up</h1>
                         <hr />
                         <Form>
                             <Segment style={{ padding: '4%' }}>
 
                                 <Form.Group widths='equal'>
                                     <Form.Input label='First Name' placeholder='Enter first name' />
+                                </Form.Group>
+                                <Form.Group widths='equal'>
                                     <Form.Input label='Last Name' placeholder='Enter last name' />
                                 </Form.Group>
 
@@ -30,7 +32,7 @@ function SignUp(props) {
                                         fluid
                                         label='Email'
                                         placeholder='Enter Email'
-                                        onChange={(e) => SetLoginEmail(e.target.value)}
+                                        onChange={(e) => SetUserEmail(e.target.value)}
                                     />
                                 </Form.Group>
 
@@ -39,7 +41,7 @@ function SignUp(props) {
                                         fluid
                                         label='Password'
                                         placeholder='Enter Password'
-                                        onChange={(e) => SetLoginPassword(e.target.value)}
+                                        onChange={(e) => SetUserPassword(e.target.value)}
                                     />
                                 </Form.Group>
                                 <Form.Group widths='equal'>
@@ -47,7 +49,6 @@ function SignUp(props) {
                                         fluid
                                         label='Confirm Password'
                                         placeholder='Enter Password again'
-                                        onChange={(e) => SetLoginPassword(e.target.value)}
                                     />
                                 </Form.Group>
 
