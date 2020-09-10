@@ -8,6 +8,7 @@ function Home(props) {
 
     console.log(props)
     const history = useHistory()
+
     const checkRedux = function () {
 
         props.onLogin({ name: 'usama', age: 21 })

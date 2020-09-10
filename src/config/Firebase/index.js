@@ -13,6 +13,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
 function User(email, password) {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
 }

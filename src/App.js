@@ -9,11 +9,8 @@ import store from './store/index'
 
 function App() {
 
-  const [isLoggedIn, SetLogged] = useState(true)
   const [isLoading, SetLoading] = useState(true)
-
-
-
+  const [isLoggedIn, SetLogged] = useState(false)
   useEffect(() => {
     stateAuthentication()
   }, [])
@@ -21,7 +18,7 @@ function App() {
     firebase.auth().onAuthStateChanged(function (user) {
       SetLogged(user ? { userEmail: user.email, userName: user.displayName } : false)
       SetLoading(false)
-      console.log(user)
+      console.log(isLoggedIn)
     })
   }
 
