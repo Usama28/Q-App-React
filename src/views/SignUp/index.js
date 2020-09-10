@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form, Grid, Segment, Button, Icon } from 'semantic-ui-react'
+import { User } from '../../config/Firebase'
 
 function SignUp(props) {
 
@@ -8,6 +9,17 @@ function SignUp(props) {
     const history = useHistory()
     const [userEmail, SetUserEmail] = useState('')
     const [userPassword, SetUserPassword] = useState('')
+
+    //sign up funciton
+    const registerUser = async function () {
+        try {
+            await User(userEmail, userPassword)
+            history.push('/')
+        }
+        catch (error) {
+            alert(error.message)
+        }
+    }
 
     return (
         <div>
@@ -55,6 +67,7 @@ function SignUp(props) {
                                 <Button.Group widths='2'>
                                     <Button
                                         secondary
+                                        onClick={registerUser}
                                     >Sign Up</Button>
                                 </Button.Group>
                                 <div style={{

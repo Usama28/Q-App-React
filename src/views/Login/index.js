@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Grid, Segment, Button, Icon, Modal, ModalActions } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
-import { LogIn, FbSignIn, GoogleSignIn, User } from '../../config/Firebase'
+import { LogIn, FbSignIn, GoogleSignIn } from '../../config/Firebase'
 
 
 function Login(props) {
@@ -23,7 +23,7 @@ function Login(props) {
     const setLogin = async function () {
         try {
             await LogIn(LoginEmail, LoginPassword)
-            history.replace('/Home')
+            history.push('/Home')
         }
         catch (error) {
             alert(error.message)
