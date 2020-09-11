@@ -102,6 +102,8 @@ function Login(props) {
                                     style={{ border: 'none', backgroundColor: 'white', color: 'blue' }}
                                     onClick={setSignUp}
                                 >Sign Up</button></p>
+                                <hr />
+                                <span style={{ fontWeight: 'bold' }}>OR Join Via</span>
                             </div>
 
                             <Button.Group widths='2' style={{ marginTop: '3%' }}>
