@@ -10,15 +10,16 @@ import store from './store/index'
 function App() {
 
   const [isLoading, SetLoading] = useState(true)
-  const [isLoggedIn, SetLogged] = useState(false)
+  const [isLoggedIn, SetLogged] = useState(true)
+
   useEffect(() => {
     stateAuthentication()
   }, [])
   const stateAuthentication = function () {
     firebase.auth().onAuthStateChanged(function (user) {
-      SetLogged(user ? { userEmail: user.email, userName: user.displayName } : false)
+      SetLogged(user ? { userEmail: user.email } : false)
       SetLoading(false)
-      console.log(isLoggedIn)
+
     })
   }
 
@@ -26,12 +27,13 @@ function App() {
     <div >
       <Provider store={store}>
         <div className="head" >
-          {isLoggedIn && !isLoading && <div>
-            <h5>{isLoggedIn.userName}</h5>
-            <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
-          </div>}
-
+          {isLoggedIn && !isLoading &&
+            <div>
+              <h5>{isLoggedIn.userEmail}</h5>
+              <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
+            </div>}
           <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
+
         </div >
       </Provider>
     </div>

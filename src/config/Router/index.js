@@ -12,8 +12,7 @@ import SignUp from "../../views/SignUp";
 
 function router(props) {
 
-    const { isLoggedIn, isLoading, userState, getLogin } = props
-
+    const { isLoggedIn, isLoading } = props
     if (isLoading) {
         return <img width="50" src="https://i.gifer.com/ZZ5H.gif" />
     }
@@ -46,6 +45,6 @@ function AuthChecker(loggedValue, component) {
     return loggedValue ? component : <Redirect to='/' />
 }
 function StateChecker(stateValue, component) {
-    return !stateValue ? component : <Redirect path='/' />
+    return !stateValue ? component : <Login />
 }
 export default router;

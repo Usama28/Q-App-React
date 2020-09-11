@@ -5,7 +5,7 @@ import { User } from '../../config/Firebase'
 
 function SignUp(props) {
 
-    console.log(props)
+    // const { stateFunction } = props
     const history = useHistory()
     const [userEmail, SetUserEmail] = useState('')
     const [userPassword, SetUserPassword] = useState('')
@@ -14,6 +14,7 @@ function SignUp(props) {
     const registerUser = async function () {
         try {
             await User(userEmail, userPassword)
+            // stateFunction(false)
             history.push('/')
         }
         catch (error) {
