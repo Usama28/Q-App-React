@@ -22,6 +22,8 @@ function Company() {
         dimmer: undefined,
     })
     const { open, dimmer } = state
+
+
     return (
         <div>
             <h1>Company</h1>
@@ -49,6 +51,7 @@ function Company() {
                                                 fluid
                                                 label='Company Name'
                                                 placeholder='Enter name of company'
+                                                id='company-id'
                                             />
                                         </Form.Group>
 
@@ -57,6 +60,7 @@ function Company() {
                                                 fluid
                                                 label='Since'
                                                 type='date'
+                                                id='date-id'
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -64,18 +68,21 @@ function Company() {
                                                 fluid
                                                 label='Certificates'
                                                 type='file'
+                                                id='img-1'
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
                                             <Form.Input
                                                 fluid
                                                 type='file'
+                                                id='img-2'
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
                                             <Form.Input
                                                 fluid
                                                 type='file'
+                                                id='img-3'
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -83,7 +90,7 @@ function Company() {
                                                 fluid
                                                 type='time'
                                                 label='Timings'
-
+                                                id='time-id'
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -91,6 +98,7 @@ function Company() {
                                                 fluid
                                                 type='text'
                                                 label='Address'
+                                                id='address-id'
                                             />
                                         </Form.Group>
 
