@@ -14,8 +14,7 @@ function SignUp(props) {
     const registerUser = async function () {
         try {
             await User(userEmail, userPassword)
-            // stateFunction(false)
-            history.push('/')
+            history.push('/Home')
         }
         catch (error) {
             alert(error.message)

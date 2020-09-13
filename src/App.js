@@ -5,7 +5,8 @@ import Router from './config/Router';
 import { firebase } from './config/Firebase';
 import { Button } from 'semantic-ui-react'
 import { Provider } from 'react-redux'
-import store from './store/index'
+import { store, persistor } from './store/index'
+import { PersistGate } from 'redux-persist/integration/react'
 
 function App() {
 
@@ -26,15 +27,16 @@ function App() {
   return (
     <div >
       <Provider store={store}>
-        <div className="head" >
-          {isLoggedIn && !isLoading &&
-            <div>
-              <h5>{isLoggedIn.userEmail}</h5>
-              <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
-            </div>}
-          <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
-
-        </div >
+        <PersistGate persistor={persistor}>
+          <div className="head" >
+            {isLoggedIn && !isLoading &&
+              <div>
+                <h5>{isLoggedIn.userEmail}</h5>
+                <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
+              </div>}
+            <Router isLoggedIn={isLoggedIn} isLoading={isLoading} />
+          </div >
+        </PersistGate>
       </Provider>
     </div>
   );

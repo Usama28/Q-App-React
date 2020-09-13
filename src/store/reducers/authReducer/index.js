@@ -1,5 +1,6 @@
 //state is iniitally a store
-function reducer(state = {}, action) {
+function AuthReducer(state = {}, action) {
+    console.log('auth wala reducer', action)
     switch (action.type) {
 
         case 'SET_USER': {
@@ -14,4 +15,4 @@ function reducer(state = {}, action) {
     }
 }
 
-export default reducer
+export default AuthReducer
