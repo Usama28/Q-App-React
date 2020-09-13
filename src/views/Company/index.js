@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form, Grid, Segment, Button, Modal } from 'semantic-ui-react'
 
@@ -23,6 +23,17 @@ function Company() {
     })
     const { open, dimmer } = state
 
+    //states 
+    const [companyName, setCompName] = useState('')
+    const [date, setDate] = useState('')
+    const [time, setTime] = useState('')
+    const [address, setAddress] = useState('')
+
+    console.log(companyName)
+    console.log(date)
+
+    console.log(time)
+    console.log(address)
 
     return (
         <div>
@@ -52,6 +63,7 @@ function Company() {
                                                 label='Company Name'
                                                 placeholder='Enter name of company'
                                                 id='company-id'
+                                                onChange={(e) => { setCompName(e.target.value) }}
                                             />
                                         </Form.Group>
 
@@ -61,6 +73,7 @@ function Company() {
                                                 label='Since'
                                                 type='date'
                                                 id='date-id'
+                                                onChange={(e) => { setDate(e.target.value) }}
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -91,6 +104,7 @@ function Company() {
                                                 type='time'
                                                 label='Timings'
                                                 id='time-id'
+                                                onChange={(e) => { setTime(e.target.value) }}
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -99,6 +113,7 @@ function Company() {
                                                 type='text'
                                                 label='Address'
                                                 id='address-id'
+                                                onChange={(e) => { setAddress(e.target.value) }}
                                             />
                                         </Form.Group>
 
