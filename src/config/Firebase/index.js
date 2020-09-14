@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-
+import 'firebase/storage'
 var firebaseConfig = {
     apiKey: "AIzaSyDxIzefJizL0TgME0W2O7DOOj8-klrsNdo",
     authDomain: "q-app-7ee6e.firebaseapp.com",
@@ -13,6 +13,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+const storage = firebase.storage()
 
 function User(email, password) {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -36,5 +37,6 @@ export {
     LogIn,
     FbSignIn,
     GoogleSignIn,
+    storage,
     firebase
 }

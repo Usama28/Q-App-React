@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form, Grid, Segment, Button, Modal } from 'semantic-ui-react'
+import { firebase, storage } from '../../config/Firebase'
 
 //function for modal no logics
 function exampleReducer(state, action) {
@@ -28,12 +29,35 @@ function Company() {
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [address, setAddress] = useState('')
+    const [imageFile, setImgFile] = useState('')
 
-    console.log(companyName)
-    console.log(date)
+    //add details to firebase
+    const addDetails = function () {
+        firebase.firestore().collection('Company Details').add(
+            {
+                companyName,
+                date,
+                time,
+                address
+            }
+        ).then(function () {
+            setCompName('')
+            setDate('')
+            setTime('')
+            setAddress('')
+            dispatch({ type: 'CLOSE_MODAL' })
+        })
+        //upload image to firebase
+        const uploadTask = storage.ref(`/images/${imageFile.name}`).put(imageFile)
+        //initiates the firebase side uploading 
+        uploadTask.on('state_changed',
+            (snapShot) => {
+                console.log(snapShot)
+            }, (err) => {
+                console.log(err)
+            })
+    }
 
-    console.log(time)
-    console.log(address)
 
     return (
         <div>
@@ -82,6 +106,7 @@ function Company() {
                                                 label='Certificates'
                                                 type='file'
                                                 id='img-1'
+                                                onChange={(e) => { setImgFile(e.target.files[0]) }}
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
@@ -126,7 +151,7 @@ function Company() {
                     <Modal.Actions style={{ display: 'flex', justifyContent: 'center' }}>
                         <Button
                             secondary
-                            onClick={() => dispatch({ type: 'CLOSE_MODAL' })}>
+                            onClick={addDetails}>
                             Add
                         </Button>
                     </Modal.Actions>
