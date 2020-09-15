@@ -19,18 +19,18 @@ function Home(props) {
 
             <h1>Home</h1>
             <p>Are you a company or waiting for the tokens?</p>
-            <h1>{props.user.name}</h1>
+            {/* <h1>{props.user.name}</h1> */}
             <div>
                 <Button secondary onClick={() => history.push('/Company')} >Company</Button>
-                <Button secondary onClick={checkRedux}>Normal User</Button>
+                <Button secondary onClick={checkRedux}>Get Token</Button>
             </div>
-            <MyMapComponent
+            {/* <MyMapComponent
                 isMarkerShown
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
-            />
+            /> */}
 
 
         </div>

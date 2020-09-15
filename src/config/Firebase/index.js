@@ -13,6 +13,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+//for image uploading to firebase
 const storage = firebase.storage()
 
 function User(email, password) {

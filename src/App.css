@@ -17,3 +17,8 @@ color: #0080FF;
   align-items: center; 
   justify-content: center;
 }
+.loading-img{
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}

@@ -14,7 +14,9 @@ function router(props) {
 
     const { isLoggedIn, isLoading } = props
     if (isLoading) {
-        return <img width="50" src="https://i.gifer.com/ZZ5H.gif" />
+        return <div style={{ textAlign: 'center', marginTop: '25%' }}>
+            <img width='50' src="https://i.gifer.com/ZZ5H.gif" />
+        </div>
     }
     const currentPath = window.location.pathname.length === 1 ? 'Home' : window.location.pathname
     console.log(currentPath)
