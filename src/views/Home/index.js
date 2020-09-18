@@ -39,7 +39,8 @@ function Home(props) {
                         {showCompany.map((item) => {
                             return <Grid.Column>
                                 <Card>
-                                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
+
+                                    <Image src={item.image} />
                                     <Card.Content>
                                         <Card.Header>{item.companyName}</Card.Header>
                                         <Card.Meta>
