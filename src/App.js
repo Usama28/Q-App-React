@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Input, Menu, Button } from 'semantic-ui-react'
-import { Navbar, Nav, Form, FormControl, NavDropdown } from 'react-bootstrap';
+import { Button } from 'semantic-ui-react'
+import { Navbar, Nav, Form } from 'react-bootstrap';
 import Router from './config/Router';
-import { firebase } from './config/Firebase';
+import firebase from './config/Firebase';
 import { Provider } from 'react-redux'
 import { store, persistor } from './store/index'
 import { PersistGate } from 'redux-persist/integration/react'
+import './App.css';
+
 
 function App() {
 

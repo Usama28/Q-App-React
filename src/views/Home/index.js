@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Grid, Segment, Button, Icon } from 'semantic-ui-react'
+import { Card, Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { setUser, unsetUser } from '../../store/actions/authAction'
+import { setCompany } from '../../store/actions/authCompany'
 import MyMapComponent from '../../component/Map'
+
 function Home(props) {
 
     const history = useHistory()
 
     const checkRedux = function () {
-
         props.onLogin({ name: 'usama', age: 21 })
-
     }
+
+    useEffect(() => {
+        props.getCompany()
+        // const renderCompany = props.showCompany
+
+    }, [])
+    const { showCompany } = props
+
     return (
         <div>
 
@@ -23,6 +31,30 @@ function Home(props) {
             <div>
                 <Button secondary onClick={() => history.push('/Company')} >Company</Button>
                 <Button secondary onClick={checkRedux}>Get Token</Button>
+            </div>
+            <div >
+                <Grid columns={3}  >
+                    <Grid.Row style={{ margin: '3% 5%' }} >
+
+                        {showCompany.map((item) => {
+                            return <Grid.Column>
+                                <Card>
+                                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
+                                    <Card.Content>
+                                        <Card.Header>{item.companyName}</Card.Header>
+                                        <Card.Meta>
+                                            <span className='date'>Started in {item.date}</span>
+                                        </Card.Meta>
+                                        <Card.Description style={{ textAlign: 'center' }}>
+                                            <Button color='grey'>View Details</Button>
+                                        </Card.Description>
+                                    </Card.Content>
+                                </Card>
+                            </Grid.Column>
+                        })}
+
+                    </Grid.Row>
+                </Grid>
             </div>
             {/* <MyMapComponent
                 isMarkerShown
@@ -40,14 +72,16 @@ function Home(props) {
 const mapStateToProps = (state) => {
     console.log('map state from component', state)
     return {
-        user: state.AuthReducer.user
+        user: state.AuthReducer.user,
+        showCompany: state.companyReducer.Company
     }
 }
 const mapDispatchToProps = (dispatch) => {
 
     return {
         onLogin: (user) => dispatch(setUser(user)),
-        onLogout: () => dispatch(unsetUser())
+        onLogout: () => dispatch(unsetUser()),
+        getCompany: () => dispatch(setCompany())
     }
 }
 

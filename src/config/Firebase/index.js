@@ -33,11 +33,17 @@ function GoogleSignIn(googleProvider) {
     var googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
 }
+
+// function imagesUrl(imageUrl){
+
+//     return  storage.ref('images').child().getDownloadURL()
+// }
+
 export {
     User,
     LogIn,
     FbSignIn,
     GoogleSignIn,
-    storage,
-    firebase
+    storage
 }
+export default firebase

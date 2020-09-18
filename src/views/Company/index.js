@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form, Grid, Segment, Button, Modal } from 'semantic-ui-react'
-import { firebase, storage } from '../../config/Firebase'
+import { storage } from '../../config/Firebase'
+import firebase from '../../config/Firebase'
+
 
 //function for modal no logics
 function exampleReducer(state, action) {
@@ -29,34 +31,48 @@ function Company() {
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [address, setAddress] = useState('')
-    const [imageFile, setImgFile] = useState('')
+    const [imageAsFile, setImgFile] = useState('')
+
+    const uploadImage = e => {
+        if (e.target.files[0]) {
+            setImgFile(e.target.files[0])
+        }
+    }
 
     //add details to firebase
-    const addDetails = function () {
-        firebase.firestore().collection('Company Details').add(
-            {
-                companyName,
-                date,
-                time,
-                address
-            }
-        ).then(function () {
-            setCompName('')
-            setDate('')
-            setTime('')
-            setAddress('')
-            dispatch({ type: 'CLOSE_MODAL' })
-        })
-        //upload image to firebase
-        const uploadTask = storage.ref(`/images/${imageFile.name}`).put(imageFile)
-        //initiates the firebase side uploading 
+    const addDetails = e => {
+        e.preventDefault()
+        console.log('start of upload')
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
         uploadTask.on('state_changed',
             (snapShot) => {
-                console.log(snapShot)
+
             }, (err) => {
-                console.log(err)
+
+            }, () => {
+                storage.ref('images').child(imageAsFile.name).getDownloadURL()
+                    .then(fireBaseUrl => {
+                        firebase.firestore().collection('Company Details').add(
+                            {
+                                companyName,
+                                date,
+                                time,
+                                address,
+                                image: fireBaseUrl
+                            }
+                        ).then(function () {
+                            setCompName('')
+                            setDate('')
+                            setTime('')
+                            setAddress('')
+                            dispatch({ type: 'CLOSE_MODAL' })
+                        })
+                    }).catch(e => {
+                        console.log(e.message)
+                    })
             })
     }
+
 
 
     return (
@@ -68,7 +84,7 @@ function Company() {
             >+</Button>
 
             {/* Modal Code */}
-            <div className="company-modal">
+            <div className="company-modal" >
                 <Modal
                     style={{ width: 380 }}
                     dimmer={dimmer}
@@ -106,21 +122,7 @@ function Company() {
                                                 label='Certificates'
                                                 type='file'
                                                 id='img-1'
-                                                onChange={(e) => { setImgFile(e.target.files[0]) }}
-                                            />
-                                        </Form.Group>
-                                        <Form.Group widths='equal'>
-                                            <Form.Input
-                                                fluid
-                                                type='file'
-                                                id='img-2'
-                                            />
-                                        </Form.Group>
-                                        <Form.Group widths='equal'>
-                                            <Form.Input
-                                                fluid
-                                                type='file'
-                                                id='img-3'
+                                                onChange={uploadImage}
                                             />
                                         </Form.Group>
                                         <Form.Group widths='equal'>
