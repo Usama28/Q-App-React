@@ -1,5 +1,6 @@
 
 function companyReducer(state = {}, action) {
+    console.log('firebase data', action)
     console.log('company check', action)
     switch (action.type) {
         case ('SET_COMPANY'): {

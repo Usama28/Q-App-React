@@ -9,6 +9,7 @@ import Login from "../../views/Login";
 import Home from "../../views/Home";
 import Company from "../../views/Company";
 import SignUp from "../../views/SignUp";
+import CompanyDetails from "../../views/companyDetails";
 
 function router(props) {
 
@@ -36,6 +37,9 @@ function router(props) {
                     </Route>
                     <Route path="/Company">
                         {AuthChecker(isLoggedIn, <Company />)}
+                    </Route>
+                    <Route path="/CompanyDetails">
+                        {AuthChecker(isLoggedIn, <CompanyDetails />)}
                     </Route>
 
                 </Switch>

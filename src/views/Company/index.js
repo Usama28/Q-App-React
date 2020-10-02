@@ -29,7 +29,6 @@ function Company() {
     //states 
     const [companyName, setCompName] = useState('')
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
     const [address, setAddress] = useState('')
     const [imageAsFile, setImgFile] = useState('')
 
@@ -56,14 +55,13 @@ function Company() {
                             {
                                 companyName,
                                 date,
-                                time,
                                 address,
                                 image: fireBaseUrl
                             }
                         ).then(function () {
                             setCompName('')
                             setDate('')
-                            setTime('')
+
                             setAddress('')
                             dispatch({ type: 'CLOSE_MODAL' })
                         })
@@ -128,22 +126,12 @@ function Company() {
                                         <Form.Group widths='equal'>
                                             <Form.Input
                                                 fluid
-                                                type='time'
-                                                label='Timings'
-                                                id='time-id'
-                                                onChange={(e) => { setTime(e.target.value) }}
-                                            />
-                                        </Form.Group>
-                                        <Form.Group widths='equal'>
-                                            <Form.Input
-                                                fluid
                                                 type='text'
                                                 label='Address'
                                                 id='address-id'
                                                 onChange={(e) => { setAddress(e.target.value) }}
                                             />
                                         </Form.Group>
-
                                     </Segment>
                                 </Form>
                             </Grid.Column>

@@ -1,3 +1,4 @@
+import logo from "./logo.svg";
 import React, { useState, useEffect } from 'react';
 import { Button } from 'semantic-ui-react'
 import { Navbar, Nav, Form } from 'react-bootstrap';
@@ -33,20 +34,20 @@ function App() {
           <div className="head" >
             {isLoggedIn && !isLoading &&
               <div>
-                <Navbar bg="light" expand="lg"
-                  style={{ padding: '1% 5% 1% 5%' }}
+                <Navbar expand="lg"
+                  style={{ padding: '1% 5% 1% 5%', backgroundColor: '#428792' }}
                 >
-                  <Navbar.Brand href="/Home"><img width='100' height='50' src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRIcNlxmWxNVsnOVs0JLl9ALQQlzxgJ1Wbe_w&usqp=CAU' /></Navbar.Brand>
+                  <Navbar.Brand href="/Home"><img width='80' src={logo} className="App-logo" alt="logo" /></Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" >
-                      <Nav.Link href="/Home"><h4>Home</h4></Nav.Link>
-                      <Nav.Link href="/Company"><h4>Company</h4></Nav.Link>
-                      <Nav.Link href=""><h4>Tokens</h4></Nav.Link>
+                      <Nav.Link href="/Home"><h4 style={{ color: 'black' }}>Home</h4></Nav.Link>
+                      <Nav.Link href="/Company"><h4 style={{ color: 'black' }}>Company</h4></Nav.Link>
+                      <Nav.Link href=""><h4 style={{ color: 'black' }}>Tokens</h4></Nav.Link>
 
                     </Nav>
                     <Form inline>
-                      <p style={{ margin: ' 1px 34px 0px 0px' }}>Welcome <span style={{ color: 'black', fontWeight: 'bold' }}>{isLoggedIn.userEmail}</span></p>
+                      <p style={{ margin: ' 1px 34px 0px 0px', color: 'white' }}>Welcome <span style={{ color: 'black', fontWeight: 'bold' }}>{isLoggedIn.userEmail}</span></p>
                       <Button secondary onClick={() => firebase.auth().signOut()} >Sign Out</Button>
                     </Form>
                   </Navbar.Collapse>
