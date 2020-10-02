@@ -10,6 +10,7 @@ import Home from "../../views/Home";
 import Company from "../../views/Company";
 import SignUp from "../../views/SignUp";
 import CompanyDetails from "../../views/companyDetails";
+import CompanyTokens from "../../views/companyTokens";
 
 function router(props) {
 
@@ -40,6 +41,9 @@ function router(props) {
                     </Route>
                     <Route path="/CompanyDetails">
                         {AuthChecker(isLoggedIn, <CompanyDetails />)}
+                    </Route>
+                    <Route path="/CompanyTokens">
+                        {AuthChecker(isLoggedIn, <CompanyTokens />)}
                     </Route>
 
                 </Switch>

@@ -29,6 +29,7 @@ function Home(props) {
     const { open, dimmer } = state
 
     const history = useHistory()
+    //reedux checking (call on any button click)
     const checkRedux = function () {
         props.onLogin({ name: 'usama', age: 21 })
     }
@@ -104,7 +105,7 @@ function Home(props) {
             {/* <h1>{props.user.name}</h1> */}
             <div>
                 <Button secondary onClick={() => history.push('/Company')} >Company</Button>
-                <Button secondary onClick={checkRedux}>Get Token</Button>
+                <Button secondary onClick={() => { history.push('/CompanyTokens') }}>Get Token</Button>
                 <input placeholder='search company'
                     id='search-value'
                 />
