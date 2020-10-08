@@ -12,4 +12,11 @@ function companyTokens() {
     )
 }
 
-export default companyTokens
+const mapStateToProps = (state) => {
+  console.log("map state from component", state);
+  return {
+    showCompany: state.companyReducer.Company,
+  };
+};
+
+export default connect(mapStateToProps, null)(CompanyTokens);
