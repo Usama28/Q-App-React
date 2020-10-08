@@ -91,11 +91,102 @@ function companyTokens() {
 
 
   }
-    return (
-        <div>
-            WELCOME
-        </div>
-    )
+    return<div>
+      <Grid columns={1} raised>
+        <Grid.Row>
+          {showCompany.map((item, index) => {
+            return (
+              <Grid.Column
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "5%",
+                  marginLeft: "5%",
+                }}
+              >
+                <Segment color="black">
+                  <Header as="h1">{item.companyName}</Header>
+
+                  <Segment circular style={square}>
+                    <Header as="h4">
+                      Tokens Remaining
+                      <Header.Subheader>{item.token}</Header.Subheader>
+                      {/* {!showToken && <Header.Subheader>{item.token}</Header.Subheader>}
+                      {showToken && <Header.Subheader>{item.token}</Header.Subheader>} */}
+                    </Header>
+                  </Segment>
+                  <Segment circular inverted style={square}>
+                    <Header as="h4" inverted>
+                      Time forEach Token
+                      <Header.Subheader>{item.time} minutes</Header.Subheader>
+                    </Header>
+                  </Segment>
+                  <Button
+                    color='grey'
+                    onClick={() => { getToken(item, index) }}
+                    style={{ margin: '5% 0% 5% 32%' }}
+                  >Get Token</Button>
+
+                </Segment>
+              </Grid.Column>
+            );
+          })}
+        </Grid.Row>
+        <Modal
+          style={{
+            width: 380,
+            height: 422,
+          }}
+          dimmer={dimmer}
+          open={open}
+          onClose={() => dispatch({ type: 'CLOSE_MODAL' })}
+        >
+          <Modal.Header>Fill The Details</Modal.Header>
+          <Modal.Content>
+            <Form>
+              <Segment style={{ padding: "4%" }}>
+                <Form.Group widths="equal">
+                  <Form.Input
+                    fluid
+                    label="Name"
+                    type='text'
+                    placeholder="Enter name of patient"
+                    onChange={(e) => { setName(e.target.value) }}
+                  />
+                </Form.Group>
+
+                <Form.Group widths="equal">
+                  <Form.Input
+                    fluid
+                    label="Contact"
+                    text='number'
+                    placeholder="Enter contact number"
+                    onChange={(e) => { setNumber(e.target.value) }}
+                  />
+                </Form.Group>
+
+                <Form.Group widths="equal">
+                  <Form.Input
+                    fluid
+                    label="Image"
+                    type="file"
+                    placeholder="Enter image"
+                    onChange={uploadImage}
+                  />
+                </Form.Group>
+              </Segment>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions style={{ display: "flex", justifyContent: "center" }}>
+            <Button secondary onClick={patientData}>
+              Submit
+          </Button>
+          </Modal.Actions>
+        </Modal>
+      </Grid>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
