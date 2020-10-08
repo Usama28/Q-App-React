@@ -1,6 +1,20 @@
-import React from 'react'
-import { Grid, Image, Table, Header } from 'semantic-ui-react'
-import firebase from '../../config/Firebase'
+import React, { useState } from "react";
+import { Grid, Segment, Header, Button, Modal, Form } from "semantic-ui-react";
+import firebase, { storage } from "../../config/Firebase";
+import { connect } from "react-redux";
+import swal from 'sweetalert'
+
+//function for modal no logics
+function exampleReducer(state, action) {
+  switch (action.type) {
+    case "OPEN_MODAL":
+      return { open: true, dimmer: action.dimmer };
+    case "CLOSE_MODAL":
+      return { open: false };
+    default:
+      throw new Error();
+  }
+}
 
 function companyTokens() {
 
